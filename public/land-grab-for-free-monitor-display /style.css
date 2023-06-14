@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+  height: 100%;
+}
+
+#foreground {
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  font-family: "Courier New";
+  font-size:4vw;
+  display: none;
+}
