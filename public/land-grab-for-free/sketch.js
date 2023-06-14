@@ -1,9 +1,9 @@
 const ghosts = [
   "i. last sleepover, kin",
-  "we held each other closer,\n",
+  "we held each other closer,<br>",
   "",
-  "her father + our grandfather passed away\nhere, in\nthis very building\n",
-  "a hyper realistic photo of the passion of Christ\nbeside us, in its (bloody) (violent(/ce)/ glory)\n",
+  "her father + our grandfather passed away<br>here, in<br>this very building<br>",
+  "a hyper realistic photo of the passion of Christ<br>beside us, in its (bloody) (violent(/ce)/ glory)<br>",
   "the statue with the pools of blood we had taken out of the room",
   "",
   "instinct told us our ancestors are watching",
@@ -13,30 +13,28 @@ const ghosts = [
 ];
 
 const building = [
-  "ii. the building, land grab for free\n",
-  "homecoming Aurora\nbowling alley\nturned Good Sheperd convent canteen (known for their ube)\n",
-  "blue paint chipped\nyears of smoke added singes\n(to white), greyed white\n",
+  "ii. the building, land grab for free<br>",
+  "homecoming Aurora<br>bowling alley<br>turned Good Sheperd convent canteen (known for their ube)<br>",
+  "blue paint chipped<br>years of smoke added singes<br>(to white), greyed white<br>",
   "",
   "",
   "",
   "",
   "",
   "",
-  "(13 floors) erased\n14th floor\n",
+  "<s>(13 floors)</s>14th floor<br>",
   "",
-  "top floor\nSt. Joseph stands too costly to be\ta witness",
+  "top floor<br>St. Joseph stands too costly to be\ta witness",
   "",
-  "homecoming\nAurora",
+  "homecoming<br>Aurora",
   "",
-  "money took you away money\nleft us no money greed lust\n",
-  "human rights museum pending on the 12th floor\n",
-  "turned site,\nwith shattered glass\nrooftop snatched\n",
-  "turned megamall\n",
+  "money took you away money<br>left us no money greed lust<br>",
+  "human rights museum pending on the 12th floor<br>",
+  "turned site,<br>with shattered glass<br>rooftop snatched<br>",
+  "turned megamall<br>",
   "",
   "",
   "",
-  // "",
-  // ""
 ];
 
 const narrative = [ghosts, building];
