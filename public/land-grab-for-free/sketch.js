@@ -67,20 +67,6 @@ let currentLine = 0;
 let narrativeIndex = 0;
 let photos = {};
 
-function createMetaTag() {
-  // make screen mobile friendly
-  let meta = createElement("meta");
-  meta.attribute("name", "viewport");
-  meta.attribute(
-    "content",
-    "user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width,height=device-height"
-  );
-
-  let head = select("head");
-  meta.parent(head);
-}
-
-
 function preload() {
   const imageNames = [
     "img-1.JPG",
@@ -105,7 +91,6 @@ function preload() {
 }
 
 function setup() {
-  createMetaTag();
   canvas3D = createCanvas(windowWidth, windowHeight, WEBGL);
   canvas3D.id("canvas");
   foreground = select("#foreground");
