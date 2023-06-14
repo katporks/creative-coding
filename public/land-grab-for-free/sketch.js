@@ -129,6 +129,9 @@ function touchEnded() {
   nextSlide();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 function renderImages() {
   if (narrativeIndex == 0) {
