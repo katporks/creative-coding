@@ -12,4 +12,6 @@ canvas {
   position: absolute;
   font-family: "Courier New";
   font-size:4vw;
+  max-width: inherit;
+
 }
