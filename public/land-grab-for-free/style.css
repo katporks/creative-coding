@@ -6,6 +6,7 @@ html, body {
 
 canvas {
   display: block;
+  height: 100%;
 }
 
 #foreground {
