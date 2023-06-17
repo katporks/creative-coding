@@ -83,7 +83,7 @@ function preload() {
 
   for (let i = 0; i < imageNames.length; i++) {
     let currentImg = imageNames[i];
-    let path = "assets/" + currentImg;
+    let path = "../land-grab-for-free/assets/" + currentImg;
     photos[currentImg] = loadImage(path);
   }
 }
