@@ -19,9 +19,9 @@ Here is a link to the completed works:
 https://atop-remembering.web.app
 
 ## santan-chain 
-"santan-chain" is an interactive sandbox loosely based on one of the first creative coding examples by Qianqian. I added a randomized the range of colors/opacities to reflect that of the "santan" flowers in my childhood back yard. I added an `isTouching` state to have the petals be created when the touch event starts until it is let go. The stems are randomized shades of green that tether every petal from a contant vertice in the center. The leaves are created while there are no touch events adding nodes of leaves in moments of stillness.
+In "santan-chain," an interactive sandbox project loosely based on one of Qianqian's creative coding examples, I added randomized colors and opacities to mimic the "santan" flowers from my childhood backyard. Petals are created when a touch event starts and continue until it is released. The stems are randomized shades of green, connecting every petal to a constant vertice in the center. Leaves are dynamically created during moments of stillness.
 
-These are screenshots of works sent to me by family and friends in the Philippines and in Vancouver:
+These screenshots showcase works shared by family and friends in the Philippines and Vancouver:
 
 ![interactive sandbox drawing i. by juno](https://github.com/katporks/creative-coding/blob/main/readme-photos/juno-1.jpg?raw=true)
 ![interactive sandbox drawing ii. by juno](https://github.com/katporks/creative-coding/blob/main/readme-photos/juno-2.jpg?raw=true)
@@ -29,13 +29,13 @@ These are screenshots of works sent to me by family and friends in the Philippin
 ![interactive sandbox drawing by tita jo](https://github.com/katporks/creative-coding/blob/main/readme-photos/roxanne-time-capsule.jpg?raw=true)
 
 ## land-grab-for-free
-"land-grab-for-free" was made possible with WEBGL. As an interactive poem with 3D rendering, this was a challenging and rewarding work. I drafted the cubes on graph paper with values for translations. The constant value is the width of each building with the length across the z-index and height as random values within a range. 
+"land-grab-for-free" was developed using WEBGL, providing an interactive 3D rendering experience for an expressive poem. I designed the building cubes on graph paper, assigning translation values. Each building has a constant width, varying length across the z-index, and random height within a range.
 
-The color values were extrapolated from personal photos of our stolen family building. Each building is a random color from the extrapolated palette with varying alpha/opacity  values. 
+Color values were extracted from personal photos of a family building that was lost. Each building is assigned a random color from the extracted palette, with varying alpha/opacity values.
 
-My initial prototype had photos rendered across a transparent plane. This made layering the poem verses difficult therefore I attached the text and background photos to a div behind the canvas. For the finale of the interactive poem, I rendered family photos from the building as textures across the surface of each cube. 
+Initially, I attempted to render photos on a transparent plane, but this made layering the poem verses challenging. To address this, I attached the text and background photos to a div positioned behind the canvas. For the grand finale of the interactive poem, I used family photos as textures applied to the surface of each cube.
 
-A challenge was that as the number of photos increased the more laggy the interactive elements became. One touch on a mobile phone would register as multiple skipping forward the slides. I created the following asynchronous mutex lock with chained renderings which solved the issue.
+As the number of photos increased, the interactive elements became slower. To mitigate this, I implemented an asynchronous mutex lock with chained renderings, effectively resolving the issue:
 
 ```
 const waitBeforeRender = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -51,7 +51,7 @@ const nextSlide = async () => {
 };
 ```
 
-I made different branches in this repo for unique renderings. The `poetry for print` branch was to be able to create an art print with part i. and part ii. of the poems. `version/display-on-monitor` was a branch where I created a feature without text to display for accessibility in the art gallery. `feat/land-grab-for-free` is for the initial version for deployment on firebase.
+To explore different renderings, I created separate branches within the repository. The poetry for print branch was dedicated to creating an art print with part i. and part ii. of the poems. The version/display-on-monitor branch featured a version without text for accessibility in art galleries. The feat/land-grab-for-free branch contains the initial deployment version on Firebase.
 
 ![version of land-grab-for-free with part i. poem](https://github.com/katporks/creative-coding/blob/main/readme-photos/IMG_7773.PNG?raw=true)
 ![version of land-grab-for-free with part ii. poem](https://github.com/katporks/creative-coding/blob/main/readme-photos/IMG_7702.PNG?raw=true)
