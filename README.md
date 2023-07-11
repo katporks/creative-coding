@@ -55,4 +55,5 @@ I made different branches in this repo for unique renderings. The `poetry for pr
 ![version of land-grab-for-free with part ii. poem](https://github.com/katporks/creative-coding/blob/main/readme-photos/IMG_7702.PNG?raw=true)
 ![a photo with renderings of 3D cubes with randomized shades of cerulean blue](https://github.com/katporks/creative-coding/blob/main/readme-photos/IMG_7703.PNG?raw=true)
 ![3D buildings with photos rendered on surface](https://github.com/katporks/creative-coding/blob/main/readme-photos/IMG_7705.PNG?raw=true)
+![a couple gazing on land-grab-for-free monitor display in Arrietta Art Gallery, New Westminster](https://github.com/katporks/creative-coding/blob/main/readme-photos/IMG_7722.jpeg?raw=true)
 
