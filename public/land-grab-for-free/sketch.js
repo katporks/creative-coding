@@ -1,6 +1,5 @@
 const ghosts = [
-  "i. last sleepover, kin",
-  "we held each other closer,<br>",
+  "i. last sleepover, kin<br><br><br><br><br>we held each other closer,<br><br>her father + our grandfather passed away<br>here, in<br>this very building<br><br>a hyper realistic photo of the passion of Christ<br>beside us, in its (bloody) (violent(/ce)/ glory)<br>the statue with the pools of blood we had taken out of the room<br><br>instinct told us our ancestors are watching",
   "",
   "her father + our grandfather passed away<br>here, in<br>this very building<br>",
   "a hyper realistic photo of the passion of Christ<br>beside us, in its (bloody) (violent(/ce)/ glory)<br>",
@@ -9,13 +8,14 @@ const ghosts = [
   "instinct told us our ancestors are watching",
   "",
   "",
-  "",
+  "ii. the building, land grab for free<br><br>homecoming Aurora<br>bowling alley<br>turned Good Sheperd convent canteen (known for their ube)<br>blue paint chipped<br>years of smoke added singes<br>(to white), greyed white<br><br><s>(13 floors)</s>14th floor<br>top floor<br><br>St. Joseph stands too costly to be a witness</br>homecoming<br>Aurora<br>money took you away money<br>left us no money greed lust<br>human rights museum pending on the 12th floor<br>turned site,<br>with shattered glass<br>rooftop snatched<br>turned megamall",
+  "blue paint chipped<br>years of smoke added singes<br>(to white), greyed white<br>",
 ];
 
 const building = [
-  "ii. the building, land grab for free<br>",
-  "homecoming Aurora<br>bowling alley<br>turned Good Sheperd convent canteen (known for their ube)<br>",
-  "blue paint chipped<br>years of smoke added singes<br>(to white), greyed white<br>",
+  // "ii. the building, land grab for free<br>",
+  // "homecoming Aurora<br>bowling alley<br>turned Good Sheperd convent canteen (known for their ube)<br>",
+  // "blue paint chipped<br>years of smoke added singes<br>(to white), greyed white<br>",
   "",
   "",
   "",
