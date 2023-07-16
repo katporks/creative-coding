@@ -1,15 +1,22 @@
 'use strict';
 
-const expect = require('chai').expect;
+const { expect } = require('chai');
+const sinon = require('sinon');
 
 const Cloud = require('../cloud');
 const Cube = require('../cube');
 
 describe ('Cloud tests', () =>  {
     let cloud;
+    let randomStub;
 
     beforeEach(() => {
         cloud = new Cloud(4, 3);
+        randomStub = sinon.stub(Math, 'random');
+    })
+
+    afterEach(() => {
+        randomStub.restore();
     })
 
     it('should be an object with int gridX >= 4 and int gridY >= 3', (done) =>  {
@@ -45,8 +52,10 @@ describe ('Cloud tests', () =>  {
     })
 
     it('should have 100% probability when gridX equals 1', (done) => {
+        randomStub.returns(1);
         let minimumGridXCloud = new Cloud(4, 100);
         expect(minimumGridXCloud.ridgeProbabilities).to.deep.equals([100]);
+        expect(minimumGridXCloud._getRandomRidge()).to.equal(1);
         done();
     })
 
@@ -58,13 +67,19 @@ describe ('Cloud tests', () =>  {
 
     it('should have two different set probabilities when gridX floor divided by three equals 2', (done) => {
         let gridXCloud = new Cloud(8, 50);
-        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 40]);
+        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 100]);
         done();
     })
 
     it('should have three different set probabilities when gridX floor divided by three equals 3', (done) => {
         let gridXCloud = new Cloud(9, 50);
-        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 84, 16]);
+        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 84, 100]);
+        randomStub.returns(0.6);
+        expect(gridXCloud._getRandomRidge()).to.equal(1);
+        randomStub.returns(0.84);
+        expect(gridXCloud._getRandomRidge()).to.equal(2);
+        randomStub.returns(1);
+        expect(gridXCloud._getRandomRidge()).to.equal(3);
         done();
     })
 })
