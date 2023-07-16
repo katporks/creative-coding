@@ -16,6 +16,8 @@ describe ('Cloud tests', () =>  {
         expect(cloud).to.be.a('object');
         expect(cloud.gridX).to.be.a('number');
         expect(cloud.gridY).to.be.a('number');
+        expect(cloud._minRidge).to.be.equals(1);
+        expect(cloud._maxRidge).to.be.equals(1);
         done();
     })
 
@@ -31,8 +33,14 @@ describe ('Cloud tests', () =>  {
 
     it('should make gridX floored integers if input flots', (done) => {
         let floatCloud = new Cloud(4.2, 3.3);
-        expect(floatCloud.gridX).to.be.equal(4);
-        expect(floatCloud.gridY).to.be.equal(3);
+        expect(floatCloud.gridX).to.be.equals(4);
+        expect(floatCloud.gridY).to.be.equals(3);
+        done();
+    })
+
+    it('should have cloud._maxRidge floor divide any number by 3', (done) => {
+        let floatCloud = new Cloud(12.16, 3);
+        expect(floatCloud._maxRidge).to.be.equals(4);
         done();
     })
 })
@@ -59,11 +67,11 @@ describe ('Cube tests', () =>  {
     })
 
     it('should store initial values without mutation', (done) =>  {
-        expect(cube.hasShadeA).to.be.equal(true);
-        expect(cube.hasShadeB).to.be.equal(true);
-        expect(cube.hasShadeC).to.be.equal(true);
-        expect(cube.hasShadeD).to.be.equal(true);
-        expect(cube.colour).to.be.equal("F2F5F6");
+        expect(cube.hasShadeA).to.be.equals(true);
+        expect(cube.hasShadeB).to.be.equals(true);
+        expect(cube.hasShadeC).to.be.equals(true);
+        expect(cube.hasShadeD).to.be.equals(true);
+        expect(cube.colour).to.be.equals("F2F5F6");
         done();
     }) 
 })
