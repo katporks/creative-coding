@@ -43,6 +43,30 @@ describe ('Cloud tests', () =>  {
         expect(floatCloud._maxRidge).to.be.equals(4);
         done();
     })
+
+    it('should have 100% probability when gridX equals 1', (done) => {
+        let minimumGridXCloud = new Cloud(4, 100);
+        expect(minimumGridXCloud.ridgeProbabilities).to.deep.equals([100]);
+        done();
+    })
+
+    it('should have 100% probability when gridX floor divided by three equals 1', (done) => {
+        let minimumGridXCloud = new Cloud(5, 100);
+        expect(minimumGridXCloud.ridgeProbabilities).to.deep.equals([100]);
+        done();
+    })
+
+    it('should have two different set probabilities when gridX floor divided by three equals 2', (done) => {
+        let gridXCloud = new Cloud(8, 50);
+        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 40]);
+        done();
+    })
+
+    it('should have three different set probabilities when gridX floor divided by three equals 3', (done) => {
+        let gridXCloud = new Cloud(9, 50);
+        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 84, 16]);
+        done();
+    })
 })
 
 describe ('Cube tests', () =>  {
