@@ -2,6 +2,7 @@ const minGridX = 4;
 const minGridY = 3;
 const minRidge = 1;
 const rollingProbability = 0.6;
+const minGridYLengthForRandomCenter = 6
 const xOutOfBoundsErrorMsg = `Cloud.gridX must be greater than or equal to ${minGridX}`;
 const yOutOfBoundsErrorMsg = `Cloud.gridY must be greater than or equal to ${minGridY}`;
 
@@ -34,8 +35,6 @@ class Cloud {
             let probabilities = this._getRidgeProbabilties();
             for (let index = 0; index < probabilities.length; index++) {
                 const probability = probabilities[index];
-                console.log("randomProbability", randomProbability);
-                console.log("probability", probability);
                 if (randomProbability <= probability) {
                   ridge = index + 1;
                   return ridge;
@@ -44,9 +43,50 @@ class Cloud {
             
             return ridge;  
         }
-        this._getRowMetaData = function() {
-            let allMetaData = [];
 
+        this._getLongestCloudRow = function() {
+            if (gridY < minGridYLengthForRandomCenter) {
+                return Math.floor(gridY/2)
+            }
+            let lowerBound = Math.floor(gridY/3);
+            let upperBound = lowerBound * 2;
+            let randomRow = Math.floor(
+                Math.random() * (upperBound - lowerBound) + lowerBound
+            );
+            return randomRow;
+        }
+
+        this._getNumHalfRidgeBlocks = function (numBlocks) {
+            let halfRidge = this._getRandomRidge();
+            let newNumBlocks = numBlocks - halfRidge;
+            if (newNumBlocks <= 0) {
+               return 0;
+            } 
+            return halfRidge;
+        }
+
+        this._getEachRowMetaData = function (current_index, rowMetaData, difference) {  
+            let numBlocks = rowMetaData[current_index]["numBlocks"];
+            let leftRidge = this._getNumHalfRidgeBlocks();
+            let rightRidge = this._getNumHalfRidgeBlocks();
+            let afterLeftRidgeNumBlocks = numBlocks - leftRidge;
+            let afterRightRidgeNumBlocks = numBlocks - rightRidge;
+
+            if (current_index < 0 || afterLeftRidgeNumBlocks + afterRightRidgeNumBlocks == 0) {
+                return rowMetaData;
+            }
+
+            rowMetaData["leftRidge"] = leftRidge;
+            rowMetaData["rightRidge"] = rightRidge;
+            rowMetaData["numBlocks"] = numBlocks - leftRidge - rightRidge;
+
+            this._getEachRowMetaData(current_index + difference, rowMetaData, difference);
+        }
+
+        this._getMetaData = function() {
+            let centerRow = this._getLongestCloudRow();
+            let allMetaData = {};
+            
         }
 
         this.gridX = gridX;
@@ -81,7 +121,4 @@ class Cloud {
     }
 }
 
-let testCloud = new Cloud(4, 100);
-let result = testCloud._getRandomRidge();
-console.log(result)
 module.exports = Cloud;
