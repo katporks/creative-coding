@@ -1,7 +1,12 @@
+'use strict';
+
+const Cloud = require('./cloud');
+const Cube = require('./cube');
+
 function setup() {
-    let canvas = createCanvas(windowWidth, windowHeight)
+    let canvas = createCanvas(windowWidth, windowHeight, WEBGL)
 }
 
 function draw() {
-    rect(0, 0, 500, 500);
+    box();
 }
