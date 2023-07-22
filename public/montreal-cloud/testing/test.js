@@ -82,6 +82,22 @@ describe ('Cloud tests', () =>  {
         expect(gridXCloud._getRandomRidge()).to.equal(3);
         done();
     })
+
+    it('should have median as longest cloud row when gridY is less than 6', (done) => {
+        let smallCloud = new Cloud(4, 5);
+        expect(smallCloud._getLongestCloudRow()).to.equal(2);
+        done()
+    })
+
+    it('should have random row in the range of the 1/3 and 2/3 of any cloud when grid Y is greater than 5', (done) => {
+        let largerCloud = new Cloud(4, 10);
+        randomStub.returns(0);
+        let lowerBoundThird = Math.floor(largerCloud.gridY/3);
+        expect(largerCloud._getLongestCloudRow()).to.equal(lowerBoundThird);
+        randomStub.returns(1);
+        expect(largerCloud._getLongestCloudRow()).to.equal(lowerBoundThird * 2);
+        done()
+    })
 })
 
 describe ('Cube tests', () =>  {
