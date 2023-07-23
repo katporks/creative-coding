@@ -73,9 +73,6 @@ class Cloud {
             return halfMetadata;
         }
 
-        // this.getRowMetaData = (numBlocks) => {
-
-        // }
 
         this._getEachRowMetaData = () => {  
             let centralIndex = this._getLongestCloudRow();
@@ -84,6 +81,7 @@ class Cloud {
             let metadata = {}
 
             for (let i = centralIndex-1; i >= 0; i--) {
+                // TODO: abstract this into helper function, implement coin toss random between left and right
                 let leftRidge = this._getHalfRowMetaData(upperBlocks);
                 upperBlocks = leftRidge["numBlocks"];
                 let rightRidge = this._getHalfRowMetaData(upperBlocks);
@@ -117,9 +115,7 @@ class Cloud {
         }
 
         this._getMetaData = () => {
-            let centerIndex = this._getLongestCloudRow();
-            let metadata = {centerIndex: {"numBlocks": gridX}};
-            let allMetaData = {};
+            
             
         }
 
