@@ -126,6 +126,24 @@ describe ('Cloud tests', () =>  {
         stub.restore();
         done()
     })
+
+    it("should return cloud's metadata", function (done) {
+        let singleRidgeCloud = new Cloud(5, 4);
+        randomStub.returns(1);
+
+        // Expected output for the test case
+        const expectedMetadata = {
+            '0': { leftRidge: 1, rightRidge: 1, numBlocks: 1 },
+            '1': { leftRidge: 1, rightRidge: 1, numBlocks: 3 },
+            '2': { leftRidge: 0, rightRidge: 0, numBlocks: 5 },
+            '3': { leftRidge: 1, rightRidge: 1, numBlocks: 3 }        };
+
+        // Console log the actual output to compare with expected output
+        let metadata = singleRidgeCloud._getEachRowMetaData()
+        // Assertion to check if the actual output matches the expected output
+        expect(metadata).to.deep.equal(expectedMetadata);
+        done()
+    });
 })
 
 describe ('Cube tests', () =>  {
