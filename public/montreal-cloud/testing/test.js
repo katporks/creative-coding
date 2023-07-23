@@ -136,7 +136,8 @@ describe ('Cloud tests', () =>  {
             '0': { leftRidge: 1, rightRidge: 1, numBlocks: 1 },
             '1': { leftRidge: 1, rightRidge: 1, numBlocks: 3 },
             '2': { leftRidge: 0, rightRidge: 0, numBlocks: 5 },
-            '3': { leftRidge: 1, rightRidge: 1, numBlocks: 3 }        };
+            '3': { leftRidge: 1, rightRidge: 1, numBlocks: 3 }        
+        };
 
         // Console log the actual output to compare with expected output
         let metadata = singleRidgeCloud._getEachRowMetaData()
