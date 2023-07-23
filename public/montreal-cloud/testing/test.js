@@ -98,6 +98,34 @@ describe ('Cloud tests', () =>  {
         expect(largerCloud._getLongestCloudRow()).to.equal(lowerBoundThird * 2);
         done()
     })
+
+    it('should return 0 ridge if there are not enough numBlocks', (done) => {
+        expect(cloud._getHalfRowMetaData(0)).to.deep.equal({
+            "ridge": 0,
+            "numBlocks": 0
+        });
+        
+        let stub = sinon.stub(cloud, '_getRandomRidge');
+        stub.returns(3);
+        expect(cloud._getHalfRowMetaData(3)).to.deep.equal({
+            "ridge": 3,
+            "numBlocks": 0
+        });
+
+        stub.returns(6);
+        expect(cloud._getHalfRowMetaData(5)).to.deep.equal({
+            "ridge": 0,
+            "numBlocks": 5
+        });
+
+        stub.returns(2);
+        expect(cloud._getHalfRowMetaData(5)).to.deep.equal({
+            "ridge": 2,
+            "numBlocks": 3
+        });        
+        stub.restore();
+        done()
+    })
 })
 
 describe ('Cube tests', () =>  {

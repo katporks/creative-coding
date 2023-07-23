@@ -56,19 +56,30 @@ class Cloud {
             return randomRow;
         }
 
-        this._getNumHalfRidgeBlocks = function (numBlocks) {
-            let halfRidge = this._getRandomRidge();
+        this._getHalfRowMetaData = function (numBlocks) {
+            let halfMetadata = {}
+            let halfRidge = this._getRandomRidge()
+            // console.log("numBlocks", numBlocks);
+            // console.log("halfRidge", halfRidge)
             let newNumBlocks = numBlocks - halfRidge;
-            if (newNumBlocks <= 0) {
-               return 0;
-            } 
-            return halfRidge;
+            // console.log("newNumBlocks", newNumBlocks)
+            if (newNumBlocks == 0) {
+                halfMetadata["ridge"] = halfRidge;
+                halfMetadata["numBlocks"] = 0;
+            } else if (newNumBlocks < 0) {
+                halfMetadata["ridge"] = 0,
+                halfMetadata["numBlocks"] = numBlocks
+            } else {
+                halfMetadata["ridge"] = halfRidge
+                halfMetadata["numBlocks"] = newNumBlocks
+            }
+            return halfMetadata;
         }
 
         this._getEachRowMetaData = function (current_index, rowMetaData, difference) {  
             let numBlocks = rowMetaData[current_index]["numBlocks"];
-            let leftRidge = this._getNumHalfRidgeBlocks();
-            let rightRidge = this._getNumHalfRidgeBlocks();
+            let leftRidge = this._getHalfRowMetaData();
+            let rightRidge = this._getHalfRowMetaData();
             let afterLeftRidgeNumBlocks = numBlocks - leftRidge;
             let afterRightRidgeNumBlocks = numBlocks - rightRidge;
 
@@ -121,4 +132,7 @@ class Cloud {
     }
 }
 
+let test_cloud = new Cloud(4, 3);
+let remBlocks = test_cloud._getHalfRowMetaData(3);
+console.log(remBlocks)
 module.exports = Cloud;
