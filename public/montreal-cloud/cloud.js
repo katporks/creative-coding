@@ -1,7 +1,7 @@
 const minGridX = 4;
 const minGridY = 3;
 const minRidge = 1;
-const rollingProbability = 0.6;
+const rollingProbability = 0.68;
 const minGridYLengthForRandomCenter = 6
 const xOutOfBoundsErrorMsg = `Cloud.gridX must be greater than or equal to ${minGridX}`;
 const yOutOfBoundsErrorMsg = `Cloud.gridY must be greater than or equal to ${minGridY}`;
@@ -117,23 +117,26 @@ class Cloud {
             return metadata
         }
 
-        this._createMatrix = () => {
+        this.createMatrix = () => {
             let metadata = this._getEachRowMetaData()
-            console.log(metadata)
+            // console.log(metadata)
             let matrix = Array(gridY).fill().map(() => Array(gridX).fill(false));
             let leftStart = 0;
             let rightStart = gridX - 1; 
-            console.log("leftStart", leftStart);
-            console.log("rightStart", rightStart);
+            // console.log("leftStart", leftStart);
+            // console.log("rightStart", rightStart);
             matrix[this.centralIndex].fill(true);
-            console.log("metadata")
+            // console.log("metadata")
             for (let i=this.centralIndex-1; i >= 0; i--) {
                 leftStart += metadata[i]["leftRidge"];
-                console.log("i", i)
-                console.log("leftStart", leftStart);
+                // console.log("i", i)
+                // console.log("leftStart", leftStart);
                 rightStart -= metadata[i]["rightRidge"];
-                console.log("rightStart", rightStart);
+                // console.log("rightStart", rightStart);
                 for (let j=leftStart; j<=rightStart; j++) {
+                    if (i == 0 && j == leftStart) {
+                        this.cloudStartIndex = (i, j);
+                    }
                     matrix[i][j] = true;
                 }
             }
@@ -142,16 +145,25 @@ class Cloud {
 
             for (let i=this.centralIndex+1; i < gridY; i++) {
                 leftStart += metadata[i]["leftRidge"];
-                console.log("i", i)
-                console.log("leftStart", leftStart);
+                // console.log("i", i)
+                // console.log("leftStart", leftStart);
                 rightStart -= metadata[i]["rightRidge"];
-                console.log("rightStart", rightStart);
+                // console.log("rightStart", rightStart);
                 for (let j=leftStart; j<=rightStart; j++) {
                     matrix[i][j] = true;
                 }
             }
 
             return matrix;
+        }
+
+        this._createCloud = () => {
+            let matrix = this.createMatrix;
+            let cloud = Array(gridY).fill().map(() => Array(gridX).fill(null));
+            cloud[this.cloudStartIndex[0], this.cloudStartIndex[1]] = new Cube(false, true, true, false);
+
+            // dfs to generate cloud patterns
+            
         }
 
         this.gridX = gridX;
@@ -188,8 +200,4 @@ class Cloud {
     }
 }
 
-let singleRidgeCloud = new Cloud(5, 4);
-let upperHalf = singleRidgeCloud._createMatrix();
-console.log(upperHalf)
-// console.log(singleRidgeCloud.matrix);
 module.exports = Cloud;

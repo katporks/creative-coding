@@ -67,16 +67,16 @@ describe ('Cloud tests', () =>  {
 
     it('should have two different set probabilities when gridX floor divided by three equals 2', (done) => {
         let gridXCloud = new Cloud(8, 50);
-        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 100]);
+        expect(gridXCloud.ridgeProbabilities).to.deep.equals([68, 100]);
         done();
     })
 
     it('should have three different set probabilities when gridX floor divided by three equals 3', (done) => {
         let gridXCloud = new Cloud(9, 50);
-        expect(gridXCloud.ridgeProbabilities).to.deep.equals([60, 84, 100]);
-        randomStub.returns(0.6);
+        expect(gridXCloud.ridgeProbabilities).to.deep.equals([68, 89.76, 100]);
+        randomStub.returns(0.68);
         expect(gridXCloud._getRandomRidge()).to.equal(1);
-        randomStub.returns(0.84);
+        randomStub.returns(0.8976);
         expect(gridXCloud._getRandomRidge()).to.equal(2);
         randomStub.returns(1);
         expect(gridXCloud._getRandomRidge()).to.equal(3);
@@ -143,6 +143,26 @@ describe ('Cloud tests', () =>  {
         let metadata = singleRidgeCloud._getEachRowMetaData()
         // Assertion to check if the actual output matches the expected output
         expect(metadata).to.deep.equal(expectedMetadata);
+        done()
+    });
+
+    it("should return cloud's matrix", function (done) {
+        let singleRidgeCloud = new Cloud(5, 4);
+        randomStub.returns(1);
+
+        // Expected output for the test case
+        const expectedMatrix = [
+            [ false, false, true, false, false ],
+            [ false, true, true, true, false ],
+            [ true, true, true, true, true ],
+            [ false, true, true, true, false ]
+          ]
+
+        // Console log the actual output to compare with expected output
+        let matrix = singleRidgeCloud.createMatrix()
+        // Assertion to check if the actual output matches the expected output
+        expect(expectedMatrix).to.deep.equal(matrix);
+        expect(singleRidgeCloud.cloudStartIndex).to.deep.equal((0, 2));
         done()
     });
 })
