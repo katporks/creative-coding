@@ -7,12 +7,15 @@ const xOutOfBoundsErrorMsg = `Cloud.gridX must be greater than or equal to ${min
 const yOutOfBoundsErrorMsg = `Cloud.gridY must be greater than or equal to ${minGridY}`;
 
 class Cloud {
-    constructor(gridX, gridY) {
+    constructor(gridX, gridY, startingTranslationX, startingTranslationY) {
         this._gridX = null;
         this._gridY = null;
         this._maxRidge = null;
         this._centralIndex = null;     
         this._matrix = null;
+        this._startingTranslationX = null;
+        this._startingTranslationY = null;
+        this._translationZ = null;
         this._minRidge = minRidge;
         this._getRidgeProbabilties = () => {
             let currentProbability = 100;
@@ -117,7 +120,7 @@ class Cloud {
             return metadata
         }
 
-        this.createMatrix = () => {
+        this._createMatrix = () => {
             let metadata = this._getEachRowMetaData()
             // console.log(metadata)
             let matrix = Array(gridY).fill().map(() => Array(gridX).fill(false));
@@ -157,22 +160,24 @@ class Cloud {
             return matrix;
         }
 
-        this._createCloud = () => {
-            let matrix = this.createMatrix;
-            let cloud = Array(gridY).fill().map(() => Array(gridX).fill(null));
-            cloud[this.cloudStartIndex[0], this.cloudStartIndex[1]] = new Cube(false, true, true, false);
+        // this._createCloud = () => {
+        //     let matrix = this.createMatrix;
+        //     let cloud = Array(gridY).fill().map(() => Array(gridX).fill(null));
+        //     cloud[this.cloudStartIndex[0], this.cloudStartIndex[1]] = new Cube(false, true, true, false);
 
-            // dfs to generate cloud patterns
+        //     // dfs to generate cloud patterns
             
-        }
+        // }
 
         this.gridX = gridX;
         this.gridY = gridY;
+        this.startingTranslationX = startingTranslationX;
+        this.startingTranslationY = startingTranslationY
         this.metadata = this._getEachRowMetaData();
         this.ridgeProbabilities = this._getRidgeProbabilties();
         this.centralIndex = this._getLongestCloudRow();
+        this.matrix = this._createMatrix()
     }
-
 
     get gridX() {
         return this._gridX;
@@ -198,6 +203,38 @@ class Cloud {
             throw new Error(yOutOfBoundsErrorMsg);
         }
     }
+
+    get startingTranslationX() {
+        return this._startingTranslationX;
+    }
+
+    set startingTranslationX(value) {
+        this._startingTranslationX = value;
+    }
+
+    get startingTranslationY() {
+        return this._startingTranslationY;
+    }
+
+    set startingTranslationY(value) {
+        this._startingTranslationY = value;
+    }
+
+    get translationZ() {
+        return this._startingTranslationY;
+    }
+
+    set translationZ(value) {
+        this._startingTranslationY = value;
+    }
+
+    get matrix() {
+        return this._matrix
+    }
+
+    set matrix(_value) {
+        this._matrix = this._createMatrix()
+    }
 }
 
-module.exports = Cloud;
+// module.exports = Cloud;
