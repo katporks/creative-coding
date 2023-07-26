@@ -50,8 +50,7 @@ function mouseWheel(event) {
         if (currentCloud.startingTranslationX - (gridX * boxWidth) > windowWidth) {
             currentCloud.startingTranslationX = -windowHeight/2 - windowWidth*0.3
         } else if (currentCloud.startingTranslationX - (gridX * boxWidth) < -windowWidth) {
-            currentCloud.startingTranslationX = windowWidth/2 - windowWidth*0.3
-
+            currentCloud.startingTranslationX = windowWidth
         } else {
             currentCloud.startingTranslationX += event.delta;
         }
